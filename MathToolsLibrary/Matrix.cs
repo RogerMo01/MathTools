@@ -30,10 +30,7 @@ namespace MathToolsLibrary
         public Matrix AddMatrices(Matrix matrixA, Matrix matrixB)
         {
             if (matrixA.Rows != matrixB.Rows || matrixA.Columns != matrixB.Columns)
-            {
-                Console.WriteLine("Matrices cannot be added");
-                return null;
-            }
+                throw new Exception("Matrices cannot be added");
 
             Matrix result = new Matrix(matrixA.Rows, matrixA.Columns);
 
