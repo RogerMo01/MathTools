@@ -29,8 +29,7 @@ namespace MathToolsLibrary
 
         public Matrix AddMatrices(Matrix matrixA, Matrix matrixB)
         {
-            if (matrixA.Rows != matrixB.Rows || matrixA.Columns != matrixB.Columns)
-                throw new Exception("Matrices cannot be added");
+            HandleException(matrixA.Rows != matrixB.Rows || matrixA.Columns != matrixB.Columns, "Matrices cannot be added");
 
             Matrix result = new Matrix(matrixA.Rows, matrixA.Columns);
 
@@ -47,11 +46,7 @@ namespace MathToolsLibrary
 
         public Matrix MultiplyMatrices(Matrix matrixA, Matrix matrixB)
         {
-            if (matrixA.Rows != matrixB.Columns)
-            {
-                Console.WriteLine("Matrices cannot be added");
-                return null;
-            }
+            HandleException(matrixA.Rows != matrixB.Columns, "Matrices cannot be added");
 
             Matrix result = new Matrix(matrixA.Rows, matrixA.Columns);
 
@@ -142,6 +137,12 @@ namespace MathToolsLibrary
             }
 
             return true;
+        }
+
+        public static void HandleException(bool condition, string message)
+        {
+            if (condition)
+                throw new Exception(message);            
         }
     }
 }
