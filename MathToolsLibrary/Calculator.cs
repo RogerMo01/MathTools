@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OOP_Exercises
+namespace MathToolsLibrary
 {
     class Calculator
     {
@@ -123,7 +123,7 @@ namespace OOP_Exercises
             return true;
         }
 
-        private static bool IsOperator(string token, string[] operatorSymbols)
+        public static bool IsOperator(string token, string[] operatorSymbols)
         {
             return operatorSymbols.Any(x => x == token);
         }
