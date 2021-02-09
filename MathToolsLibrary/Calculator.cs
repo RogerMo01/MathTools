@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MathToolsLibrary
 {
-    class Calculator
+    public class Calculator
     {
         // Requiere como parámetro un string de notación algebraica con espacios entre carácteres
         public static decimal Calculate(string algebraicExpession)
@@ -25,7 +25,7 @@ namespace MathToolsLibrary
                     if (stack.Count < 2)
                         throw new Exception("Not enough arguments have been entered");
 
-                    int newValue = Operate(int.Parse(stack.Last.Previous.Value), int.Parse(stack.Last.Value), element);
+                    decimal newValue = Operate(decimal.Parse(stack.Last.Previous.Value), decimal.Parse(stack.Last.Value), element);
 
                     stack.RemoveLast();
                     stack.RemoveLast();
@@ -38,7 +38,7 @@ namespace MathToolsLibrary
                 throw new Exception("Too much elements have been entered");
             }
 
-            return int.Parse(stack.First.Value);
+            return decimal.Parse(stack.First.Value);
         }
 
         public static string[] ToRPN(string input)
@@ -116,7 +116,7 @@ namespace MathToolsLibrary
         {
             foreach (var item in token)
             {
-                if (Char.IsNumber(item))
+                if (Char.IsNumber(item) || item == '.')
                     continue;
                 else return false;
             }
@@ -150,7 +150,7 @@ namespace MathToolsLibrary
             throw new Exception("Token is not an operator");
         }
 
-        private static int Operate(int numberA, int numberB, string Operator)
+        private static decimal Operate(decimal numberA, decimal numberB, string Operator)
         {
             switch (Operator)
             {
@@ -163,7 +163,7 @@ namespace MathToolsLibrary
                 case "/":
                     return numberA / numberB;
                 case "^":
-                    return (int)Math.Pow(numberA, numberB);
+                    return (decimal)Math.Pow((double)numberA, (double)numberB);
                 default:
                     throw new Exception("Unknown operator");
             }
