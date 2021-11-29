@@ -112,7 +112,7 @@ namespace MathToolsLibrary
             return output.ToArray();
         }
 
-        private static bool IsNumber(string token)
+        public static bool IsNumber(string token)
         {
             foreach (var item in token)
             {
