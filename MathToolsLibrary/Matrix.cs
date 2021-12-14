@@ -6,22 +6,19 @@ using System.Threading.Tasks;
 
 namespace MathToolsLibrary
 {
-    class Matrix
+    public class Matrix
     {
         public int Rows { get; private set; }
         public int Columns { get; private set; }
         public int[,] Elements { get; private set; }
 
-        public Matrix(int rows, int columns)
-        {
-            Elements = new int[rows, columns];
-        }
+        public Matrix(int rows, int columns) => Elements = new int[rows, columns];
 
         public int GetElementAt(int row, int column)
         {
             return Elements[row, column];
         }
-        
+
         public void SetElementAt(int value, int row, int column)
         {
             Elements[row, column] = value;
